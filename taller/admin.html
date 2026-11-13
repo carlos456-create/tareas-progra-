@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración - MotorTec</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">Motor<span>Tec</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="solicitud.html">Solicitar mantenimiento</a></li>
+          </ul>
+          <ul class="navbar-nav align-items-lg-center" id="menuUsuario"></ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MODULO 3: ADMINISTRACION (CRUD GENERAL) -->
+  <main>
+    <div class="encabezado">
+      <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <h2 class="mb-0">Administración</h2>
+        <a href="solicitud.html" class="btn btn-warning">+ Nueva solicitud</a>
+      </div>
+    </div>
+
+    <div class="container mb-5 d-none" id="contenidoAdmin">
+      <!-- contadores por estado -->
+      <div class="row g-3 mb-4" id="contadoresAdmin"></div>
+
+      <!-- todas las solicitudes -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5>Todas las solicitudes</h5>
+          <div class="row g-2 mb-3">
+            <div class="col-md-5">
+              <input type="text" class="form-control form-control-sm" id="buscar" placeholder="Buscar por placa, cliente o modelo">
+            </div>
+            <div class="col-md-4">
+              <select class="form-select form-select-sm" id="filtroCliente">
+                <option value="">Todos los clientes</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select form-select-sm" id="filtroEstado">
+                <option value="">Todos los estados</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead>
+                <tr><th>#</th><th>Cliente</th><th>Vehículo</th><th>Servicio</th><th>Fecha</th><th>Estado</th><th>Acciones</th></tr>
+              </thead>
+              <tbody id="tablaSolicitudes"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- control de clientes -->
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5>Clientes registrados</h5>
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr><th>Nombre</th><th>Cédula</th><th>Usuario</th><th>Teléfono</th><th>Solicitudes</th><th>Cuenta</th><th></th></tr>
+              </thead>
+              <tbody id="tablaClientes"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-3 text-center">
+    <small>MotorTec Taller Automotriz &copy; 2026</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/script.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

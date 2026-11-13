@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotorTec - Taller Automotriz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- MODULO 1: PAGINA INSTITUCIONAL -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">Motor<span>Tec</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#acerca">Acerca de</a></li>
+            <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="solicitud.html">Solicitar mantenimiento</a></li>
+          </ul>
+          <ul class="navbar-nav align-items-lg-center" id="menuUsuario"></ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Inicio -->
+    <section id="inicio" class="portada text-center">
+      <div class="container">
+        <h1 class="display-5">Mantenimiento automotriz de confianza</h1>
+        <p class="lead mt-3 mb-4">Agenda el mantenimiento de tu vehículo en línea y revisa en qué estado está tu solicitud.</p>
+        <a href="solicitud.html" class="btn btn-warning btn-lg me-2">Agendar mantenimiento</a>
+        <a href="#servicios" class="btn btn-outline-light btn-lg">Ver servicios</a>
+      </div>
+    </section>
+
+    <!-- Acerca de -->
+    <section id="acerca" class="seccion bg-white">
+      <div class="container">
+        <h2 class="titulo-seccion text-center">Acerca de nosotros</h2>
+        <div class="linea"></div>
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <p>MotorTec es un taller automotriz ubicado en Quito que trabaja desde el 2012 dando mantenimiento preventivo y correctivo a vehículos livianos de todas las marcas.</p>
+            <p>Contamos con mecánicos capacitados y equipos de diagnóstico computarizado para encontrar las fallas de tu carro de forma rápida.</p>
+            <p><b>Misión:</b> brindar un servicio honesto y de calidad para que nuestros clientes manejen seguros.</p>
+            <p><b>Visión:</b> ser uno de los talleres más recomendados del norte de Quito.</p>
+          </div>
+          <div class="col-lg-6">
+            <div class="row text-center g-3">
+              <div class="col-6">
+                <div class="card p-3 shadow-sm"><div class="dato-acerca">+14</div>años de experiencia</div>
+              </div>
+              <div class="col-6">
+                <div class="card p-3 shadow-sm"><div class="dato-acerca">+3000</div>vehículos atendidos</div>
+              </div>
+              <div class="col-6">
+                <div class="card p-3 shadow-sm"><div class="dato-acerca">8</div>mecánicos</div>
+              </div>
+              <div class="col-6">
+                <div class="card p-3 shadow-sm"><div class="dato-acerca">3 meses</div>de garantía</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios (se llenan desde JavaScript) -->
+    <section id="servicios" class="seccion">
+      <div class="container">
+        <h2 class="titulo-seccion text-center">Catálogo de servicios</h2>
+        <div class="linea"></div>
+        <div class="row g-4" id="listaServicios"></div>
+      </div>
+    </section>
+
+    <!-- Horario -->
+    <section class="seccion bg-white">
+      <div class="container">
+        <div class="row text-center g-4">
+          <div class="col-md-4">
+            <h5>Horario de atención</h5>
+            <p class="mb-0">Lunes a viernes: 08:00 - 17:00</p>
+            <p>Sábados: 08:00 - 13:00</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Dirección</h5>
+            <p>Av. 10 de Agosto y Av. de la Prensa, Quito</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Contacto</h5>
+            <p class="mb-0">022 345 678 / 099 876 5432</p>
+            <p>info@motortec.com</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 text-center">
+    <div class="container">
+      <p class="mb-1">MotorTec Taller Automotriz &copy; 2026</p>
+      <small>Proyecto académico - Programación Web 1 - ITSCO</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/script.js"></script>
+  <script>
+    // muestro el catalogo recorriendo el diccionario de servicios
+    const contenedor = document.getElementById('listaServicios');
+    let tarjetas = '';
+
+    for (const clave in servicios) {
+      const s = servicios[clave];
+      tarjetas += `
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-servicio h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">${s.nombre}</h5>
+              <p class="card-text text-muted">${s.descripcion}</p>
+              <p class="precio">Desde $${s.precio}</p>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    contenedor.innerHTML = tarjetas;
+  </script>
+</body>
+</html>
